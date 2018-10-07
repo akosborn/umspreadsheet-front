@@ -1,0 +1,32 @@
+<div class="row d-block">
+  <div class="col-md-4">
+
+    <div *ngFor="let show of getShowList()" class="card">
+      <div class="card-body">
+
+        <div appToggle>
+          <h5 class="card-title">{{ show.date | date: 'EEEE yyyy/MM/dd' }}</h5>
+          <h6 class="card-subtitle">{{ show.venue }}</h6>
+        </div>
+
+        <div class="sets collapse">
+          <ngb-tabset>
+            <ngb-tab
+              *ngFor="let set of show.sets"
+              title="{{ set.name }}">
+              <ng-template ngbTabContent>
+                <span *ngFor="let track of set.tracks; let last = last">
+                  {{ track.song }}
+                  {{(last ? '' :
+                    (track.transition == 'NONE' ? ', ' :
+                    (track.transition == 'IMPROV' ? ' -> ' : ' > '))) }}
+                </span>
+              </ng-template>
+            </ngb-tab>
+          </ngb-tabset>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

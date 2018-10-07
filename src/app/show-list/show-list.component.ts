@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-show-list',
   templateUrl: './show-list.component.html',
   styleUrls: ['./show-list.component.css']
 })
