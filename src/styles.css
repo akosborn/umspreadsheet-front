@@ -1,27 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
 body {
-  padding-top: 5rem;
-  width: 100%;
+  font-size: .875rem;
+  background: #F2F3F8;
 }
 
-.container {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 90%;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    width: 90%;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    width: 90%;
-  }
+.bg-grey {
+  background-color: #272D38;
 }
