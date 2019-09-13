@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { ToggleDirective } from './shared/toggle.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ShowDataComponent } from './show-data/show-data.component';
+import {BarChartModule} from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     TopNavComponent,
     ShowListComponent,
     HomeComponent,
-    ToggleDirective
+    ToggleDirective,
+    ShowDataComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    BarChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

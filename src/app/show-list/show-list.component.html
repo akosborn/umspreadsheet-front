@@ -1,5 +1,5 @@
 <div *ngFor="let show of showList" class="row show">
-  <div class="col">
+  <div class="col-6">
     <div class="show-head">
       <span>{{ show.city }}, {{ show.state }}</span>
       <span class="float-right">{{ show.date | date: 'yyyy/MM/dd EEE' }}</span>
@@ -13,5 +13,8 @@
               (track.transition == 'IMPROV' ? ' -> ' : ' > '))) }}
       </span>
     </div>
+  </div>
+  <div class="col-6">
+    <app-show-data [tracks]="show.sets[0].tracks.concat(show.sets[1].tracks, show.sets[2].tracks)"></app-show-data>
   </div>
 </div>
