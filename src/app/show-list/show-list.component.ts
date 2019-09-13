@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
@@ -9,29 +9,11 @@ import {Observable} from 'rxjs';
 })
 export class ShowListComponent implements OnInit {
 
-  showList;
-  size = 3;
-  page = 0;
+  @Input() showList: any[];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor() {
+  }
 
   ngOnInit() {
-    this.getRecentShows().subscribe(
-      (response) => this.showList = response.content
-    );
-  }
-
-  getRecentShows(): Observable<any> {
-    return this.httpClient.get('http://localhost:8080/api/shows?page=' + this.page + '&size=' + this.size);
-  }
-
-  getMoreShows() {
-    this.page++;
-    return this.getRecentShows().subscribe(
-      (response) => {
-        this.showList.push(...response.content);
-        console.log(this.showList);
-      }
-    );
   }
 }

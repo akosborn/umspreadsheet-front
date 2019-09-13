@@ -1,17 +1,17 @@
-<div class="row">
+<div *ngFor="let show of showList" class="row show">
+  <div class="col">
+    <div class="show-head">
+      <span>{{ show.city }}, {{ show.state }}</span>
+      <span class="float-right">{{ show.date | date: 'yyyy/MM/dd EEE' }}</span>
+    </div>
 
-  <div *ngFor="let show of showList" class="col-xs-12 col-md-6 col-lg-4">
-    <p style="font-weight: bold">{{ show.date }} {{ show.city }}, {{ show.state }}</p>
-    <p>{{ show.venue }}</p>
-    <div *ngFor="let set of show.sets">
-      <p>{{ set.name }}</p>
+    <div class="set" *ngFor="let set of show.sets">
+      <span class="font-weight-bold">{{ set.name }}</span>
       <span *ngFor="let track of set.tracks; let last = last">
-        {{ track.song }}{{(last ? '' : (track.transition == 'NONE' ? ', ' : (track.transition == 'IMPROV' ? ' -> ' : ' > '))) }}</span>
-      <br>
-      <br>
+        {{ track.song + (last ? '' :
+          (track.transition == 'NONE' ? ', ' :
+              (track.transition == 'IMPROV' ? ' -> ' : ' > '))) }}
+      </span>
     </div>
   </div>
-
 </div>
-
-<button class="btn btn-primary" (click)="getMoreShows()">Add 3 shows</button>

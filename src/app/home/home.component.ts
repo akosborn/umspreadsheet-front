@@ -14,11 +14,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.showService.getListSubject().subscribe(
-      (response) =>
-        this.showList = response.content
+      (response) => this.showList = response.content
     );
 
-    this.showService.loadShows().subscribe(
+    this.showService.loadShows(0, 3).subscribe(
       (response) => {
         this.showList = response.content;
       }
