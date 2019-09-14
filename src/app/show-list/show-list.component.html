@@ -2,7 +2,7 @@
   <div class="col">
     <div class="show-head">
       <h6>{{ show.city }}, {{ show.state }}</h6>
-      <h6>{{ show.date | date: 'yyyy/MM/dd EEE' }}</h6>
+      <h6>{{ show.date | date: 'yyyy-MM-dd' }}</h6>
     </div>
 
     <div class="set" *ngFor="let set of show.sets">
@@ -10,10 +10,10 @@
       <div class="songs">
         <div *ngFor="let track of set.tracks; let last = last">
           {{ track.song + ((last || track.transition == 'NONE') ? '' : (track.transition == 'IMPROV' ? ' -> ' : ' > ')) }}
-          <span class="indicators" *ngIf="Math.random() >= 0.75">
-            <span class="rating float-right font-weight-bold">{{ (Math.random() * 5).toFixed(1) }}</span>
-            <mat-icon class="green-icon float-right">timer</mat-icon>
-            <mat-icon class="float-right">insert_chart</mat-icon>
+          <span class="indicators">
+            <span class="rating float-right">{{ Math.random() >= 0.75 ? (Math.random() * 5).toFixed(1) : 'NR' }}</span>
+            <mat-icon [style.visibility]="Math.random() >= 0.75 ? '' : 'hidden'" class="green-icon float-right">timer</mat-icon>
+            <mat-icon [style.visibility]="Math.random() >= 0.75 ? '' : 'hidden'" class="float-right">insert_chart</mat-icon>
         </span>
         </div>
       </div>
