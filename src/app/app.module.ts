@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ShowDataComponent } from './show-data/show-data.component';
 import {BarChartModule} from '@swimlane/ngx-charts';
+import {NgCircleProgressModule} from 'ng-circle-progress';
+import {MatIconModule} from '@angular/material';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,18 @@ import {BarChartModule} from '@swimlane/ngx-charts';
     HttpClientModule,
     BrowserAnimationsModule,
     TabsModule.forRoot(),
-    BarChartModule
+    BarChartModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: '#78C000',
+      innerStrokeColor: '#C7E596',
+      animationDuration: 0
+    }),
+    MatIconModule,
+    TooltipModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

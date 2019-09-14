@@ -1,5 +1,16 @@
 .show {
   margin-bottom: 20px;
+  box-shadow: 0 6px 26px -2px rgba(68,68,68,0.23);
+  padding: 3px 5px;
+}
+
+.show h6:first-of-type {
+  margin-bottom: 0;
+}
+
+.show h6:last-of-type {
+  font-weight: bold;
+  margin-bottom: 0;
 }
 
 .show-head {
@@ -8,4 +19,32 @@
 
 .set {
   margin-bottom: 5px;
+}
+
+.set > p:first-of-type {
+}
+
+.set .songs {
+  padding-left: 15px;
+}
+
+.green-icon {
+  color: green;
+}
+
+.songs .indicators > * {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.songs .indicators > *:first-child {
+  margin-right: 0;
+}
+
+.songs .indicators > .rating {
+  border: thin solid lightgrey;
+  border-radius: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  line-height: normal;
 }
