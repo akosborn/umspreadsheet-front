@@ -10,11 +10,9 @@
       <div class="songs">
         <div *ngFor="let track of set.tracks; let last = last">
           {{ track.song + ((last || track.transition == 'NONE') ? '' : (track.transition == 'IMPROV' ? ' -> ' : ' > ')) }}
-          <span class="indicators">
-            <span class="rating float-right">{{ Math.random() >= 0.75 ? (Math.random() * 5).toFixed(1) : 'NR' }}</span>
-            <mat-icon [style.visibility]="Math.random() >= 0.75 ? '' : 'hidden'" class="green-icon float-right">timer</mat-icon>
-            <mat-icon [style.visibility]="Math.random() >= 0.75 ? '' : 'hidden'" class="float-right">insert_chart</mat-icon>
-        </span>
+          <span [style.visibility]="Math.random() >= 0.75 ? '' : 'hidden'" class="float-right badge badge-secondary">{{ (Math.random() * 5).toFixed(1) }}</span>
+          <mat-icon [style.visibility]="Math.random() >= 0.75 ? '' : 'hidden'" class="green-icon float-right">timer</mat-icon>
+          <mat-icon [style.visibility]="Math.random() >= 0.75 ? '' : 'hidden'" class="float-right">insert_chart</mat-icon>
         </div>
       </div>
     </div>

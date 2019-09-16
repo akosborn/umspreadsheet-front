@@ -14,6 +14,8 @@ import {BarChartModule} from '@swimlane/ngx-charts';
 import {NgCircleProgressModule} from 'ng-circle-progress';
 import {MatIconModule} from '@angular/material';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
+import { TrackListComponent } from './track-list/track-list.component';
+import {BsDropdownDirective, BsDropdownModule} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
     ShowListComponent,
     HomeComponent,
     ToggleDirective,
-    ShowDataComponent
+    ShowDataComponent,
+    TrackListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
       animationDuration: 0
     }),
     MatIconModule,
-    TooltipModule.forRoot()
+    TooltipModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

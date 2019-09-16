@@ -16,6 +16,11 @@
   border-bottom: grey solid thin;
 }
 
+.show .badge {
+  min-width: 30px;
+  line-height: inherit;
+}
+
 .set {
   margin-bottom: 5px;
 }
@@ -31,6 +36,11 @@
   color: green;
 }
 
+.songs > div {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
 .songs .indicators > * {
   margin-left: 2px;
   margin-right: 2px;
@@ -38,12 +48,4 @@
 
 .songs .indicators > *:first-child {
   margin-right: 0;
-}
-
-.songs .indicators > .rating {
-  border: thin solid lightgrey;
-  border-radius: 5px;
-  padding-left: 2px;
-  padding-right: 2px;
-  line-height: 22px;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ShowService} from '../shared/show.service';
+import {TrackService} from '../shared/track.service';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +10,9 @@ import {ShowService} from '../shared/show.service';
 export class HomeComponent implements OnInit {
 
   private showList = [];
+  private tracks = [];
 
-  constructor(private showService: ShowService) { }
+  constructor(private showService: ShowService, private trackService: TrackService) { }
 
   ngOnInit() {
     this.showService.getListSubject().subscribe(
@@ -22,6 +24,10 @@ export class HomeComponent implements OnInit {
         this.showList = response.content;
       }
     );
+    
+    this.trackService.loadTracks(0, 10).subscribe(resp => {
+      this.tracks = resp.content;
+    });
   }
 
   getShowList(): any[] {
