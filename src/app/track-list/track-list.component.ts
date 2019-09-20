@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {TypeaheadMatch} from 'ngx-bootstrap';
+import {TrackService} from '../shared/track.service';
 
 @Component({
   selector: 'app-track-list',
@@ -7,13 +9,20 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TrackListComponent implements OnInit {
 
-  @Input() tracks: any[];
+  @Input() tracks: { id: number, name: string, mean: number }[];
+  @Input() uniqueTracks: any[];
 
-  Math = Math;
+  track: string;
 
-  constructor() { }
+  constructor(private trackService: TrackService) { }
 
   ngOnInit() {
   }
 
+  onSelect($event: TypeaheadMatch) {
+    this.trackService.loadTracksByName($event.item.name.toString()).subscribe(resp => {
+      this.tracks = resp.content;
+      this.trackService.tracksSubject.next(this.tracks);
+    });
+  }
 }

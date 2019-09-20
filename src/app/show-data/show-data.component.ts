@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {logger} from 'codelyzer/util/logger';
 
 @Component({
   selector: 'app-show-data',
@@ -7,9 +6,23 @@ import {logger} from 'codelyzer/util/logger';
   styleUrls: ['./show-data.component.css']
 })
 export class ShowDataComponent implements OnInit {
-  @Input() tracks: any[];
 
-  data: {name: string, value: number}[];
+  data: any[];
+  barColors = [];
+
+  @Input()
+  set tracks(tracks: any[]) {
+    this.data = tracks.map(t => {
+      const name = `${t.song.name} ${t.show.date} ${t.set.name}.${t.setPosition}`;
+      const deviationPct = (((t.length - t.song.mean) / t.song.mean) * 100);
+
+      this.barColors.push({ name: name, value: deviationPct >= 0 ? '#4682B4' : '#808080' });
+      return {
+        name: name,
+        value: t.length > 0 ? deviationPct.toFixed(0) : 0
+      };
+    });
+  }
 
   aspectRatio: any[] = [700, 400];
 
@@ -18,20 +31,17 @@ export class ShowDataComponent implements OnInit {
   showYAxis = true;
   gradient = false;
   showLegend = false;
-  showXAxisLabel = true;
+  showXAxisLabel = false;
   xAxisLabel = 'Song';
   showYAxisLabel = true;
-  yAxisLabel = 'Length';
+  yAxisLabel = 'Length Deviation (%)';
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.data = this.tracks.map(t => ({ name: t.song, value: parseFloat((t.length / 60).toFixed(1)) }));
-    console.log(this.data);
   }
 
   onSelect(event) {
-    console.log(event);
   }
 }

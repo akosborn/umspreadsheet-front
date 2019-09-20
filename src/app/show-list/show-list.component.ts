@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ShowListComponent implements OnInit {
 
-  @Input() showList: any[];
+  @Input() show: any;
 
   Math = Math;
 

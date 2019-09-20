@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   private showList = [];
   private tracks = [];
+  private uniqueTracks: { id: number, name: string, mean: number }[] = [];
 
   constructor(private showService: ShowService, private trackService: TrackService) { }
 
@@ -24,10 +25,13 @@ export class HomeComponent implements OnInit {
         this.showList = response.content;
       }
     );
-    
+
     this.trackService.loadTracks(0, 10).subscribe(resp => {
       this.tracks = resp.content;
+      this.trackService.tracksSubject.next(this.tracks);
     });
+
+    this.trackService.loadAllUniqueTracks().subscribe(resp => this.uniqueTracks = resp.content);
   }
 
   getShowList(): any[] {
