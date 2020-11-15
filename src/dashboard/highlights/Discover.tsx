@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Table, Typography} from 'antd';
+import {Table, Tooltip, Typography} from 'antd';
 import styles from '../Dashboard.module.css';
 import classNames from 'classnames';
 import {fetchTracksByDeviation} from '../../TrackAPI';
+import {InfoCircleOutlined} from '@ant-design/icons';
 
 function Discover() {
 
@@ -25,7 +26,14 @@ function Discover() {
 
    return (
       <div className={classNames(styles.block)} style={{marginBottom: 30}}>
-         DISCOVER
+         <div style={{ display: 'flex', alignItems: 'baseline' }}>
+            <Typography.Title level={5} style={{ marginRight: 7 }}>
+               DISCOVER
+            </Typography.Title>
+            <Tooltip title={'Song performances that are longer than expected (one standard deviation). Sorted by percent deviation.'}>
+               <InfoCircleOutlined style={{ fontSize: 14, color: '#1890FF' }} />
+            </Tooltip>
+         </div>
 
          <Table loading={tracksAreLoading}
                 dataSource={tracks}

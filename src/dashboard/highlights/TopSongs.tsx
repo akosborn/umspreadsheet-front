@@ -25,7 +25,9 @@ function TopSongs() {
 
    return (
       <div className={classNames(styles.block)} style={{marginBottom: 30}}>
-         TOP RATED SONGS
+         <Typography.Title level={5}>
+            TOP RATED SONGS
+         </Typography.Title>
 
          <Table loading={tracksAreLoading}
                 dataSource={tracks}

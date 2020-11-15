@@ -25,7 +25,9 @@ function TopShows() {
 
    return (
       <div className={classNames(styles.block)} style={{marginBottom: 30}}>
-         TOP RATED SHOWS
+         <Typography.Title level={5}>
+            TOP RATED SHOWS
+         </Typography.Title>
 
          <Table loading={isLoading}
                 dataSource={shows}
