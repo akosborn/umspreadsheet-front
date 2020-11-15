@@ -1,9 +1,9 @@
 export const fetchTracks = async (page: number) => {
-   return fetch(`http://localhost:8082/api/songs?page=${page}`)
+   return fetch(`https://umspreadsheet.akosborn.com/api/songs?page=${page}`)
       .then(resp => resp.json());
 }
 
 export const fetchTracksByDeviation = async () => {
-   return fetch(`http://localhost:8082/api/deviation`)
+   return fetch(`https://umspreadsheet.akosborn.com/api/deviation`)
       .then(resp => resp.json());
 }
